@@ -14,6 +14,24 @@ public class FilesController : Controller {
         if (file == null) {
             return NotFound();
         }
+        
+        // Check user agent
+        string? userAgent = Request.Headers["User-Agent"].ToString();
+        Console.WriteLine("User-Agent: " + userAgent);
+        
+        // Check IP
+        string? ip = Request.HttpContext.Connection.RemoteIpAddress?.ToString();
+        Console.WriteLine("IP: " + ip);
+        
+        // URLencode name
+        name = Uri.EscapeDataString(name);
+
+        bool isWhitelistedIpPrefix = Program.WhitelistedIPPrefixs.Any(prefix => ip?.StartsWith(prefix.ToString()) ?? false);
+        if (!Program.WhitelistedUserAgents.Contains(userAgent) && !isWhitelistedIpPrefix) {
+            string path = Path.Combine(Program.Config!["local_store_path"], "bad.png");
+            return File(System.IO.File.Open(path, FileMode.Open), "application/octet-stream");
+        }
+        
         Response.Headers.ContentDisposition = $"attachment; filename=\"{name}\"";
         return File(file, "application/octet-stream");
     }

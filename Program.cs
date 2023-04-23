@@ -31,6 +31,14 @@ public static class Program {
     };
     public static Dictionary<string, string>? Config;
     public static IStorageService? StorageService;
+    public static readonly string[] WhitelistedUserAgents = {  // Discord uses these, if it for some reason doesn't then use the ones below
+        "Mozilla/5.0 (compatible; Discordbot/2.0; +https://discordapp.com)", 
+        "Mozilla/5.0 (Macintosh; Intel Mac OS X 11.6; rv:92.0) Gecko/20100101 Firefox/92.0"
+    };
+    public static readonly int[] WhitelistedIPPrefixs = {  // Discord uses these https://en.ipshu.com/ip_b_list/35 https://en.ipshu.com/ip_b_list/34
+        34,
+        35
+    };
 
     private static int Main(string[] args) {
         // Logger

@@ -1,6 +1,6 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileHostingApi", "FileHostingApi.csproj", "{395927F1-2B69-48DA-A87D-891F0BF62B30}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NoDownloadFileHost", "NoDownloadFileHost.csproj", "{395927F1-2B69-48DA-A87D-891F0BF62B30}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

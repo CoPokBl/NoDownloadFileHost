@@ -104,7 +104,7 @@ else {
         try {
             await Program.StorageService.UploadFile(newName, _loadedFile.OpenReadStream(maxSize));
         }
-        catch (IOException) {
+        catch (IOException e) {
             _statusText = $"File too large. Max size is {GetDefaultMaxUploadSize(maxSize)}.";
             _uploaded = false;
             _uploading = false;
